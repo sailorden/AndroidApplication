@@ -20,6 +20,7 @@ package hk.ust.cse.com4521.escort_app;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    private static final int SUCC_LOGIN = 0;
 
     /*@InjectView(R.id.input_email) EditText _emailText;
     @InjectView(R.id.input_password) EditText _passwordText;
@@ -44,11 +45,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //ButterKnife.inject(this);
 
         // Set listner of differents events
-        _loginButton.setOnClickListener(new View.OnClickListener() {
+        _loginButton.setOnClickListener(
+                new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 login();
+                Intent intent = new Intent(getApplicationContext(),Escort.class);
+                startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
 
@@ -58,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View v) {
                 // Start the Signup activity
                 Intent intent = new Intent(getApplicationContext(),UserChoiceActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
+                startActivityForResult(intent, SUCC_LOGIN);
             }
         });
     }

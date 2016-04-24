@@ -20,7 +20,11 @@
         </activity>
         <activity android:name=".PatientSignUpActivity" />
         <activity android:name=".EscortSignUpActivity" />
-        <activity android:name=".UserChoiceActivity"></activity>
+        <activity android:name=".UserChoiceActivity" />
+        <activity
+            android:name=".Escort"
+            android:label="@string/title_activity_escort"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
