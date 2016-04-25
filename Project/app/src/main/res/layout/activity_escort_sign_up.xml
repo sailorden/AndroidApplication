@@ -182,14 +182,17 @@
         <!-- birthday setting -->
 
 
+
         <DatePicker
-            android:id="@+id/datePicker"
+            android:id="@+id/datePicker2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
             android:startYear="1950"
-            android:endYear="2016" />
+            android:endYear="2016"/>
+
         <!-- Residential Adress -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -203,6 +206,21 @@
                 android:hint="Residential Adress" />
         </android.support.design.widget.TextInputLayout>
 
+        <TextView android:id="@+id/district_field"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Nearest District of Hong Kong"
+            android:gravity="center|left"
+            android:textSize="16dip" />
+
+        <!-- User gender Label-->
+        <Spinner
+            android:id="@+id/district_spinner"
+            android:layout_below="@+id/gender_field"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
         <!-- Occupation -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -215,6 +233,21 @@
                 android:inputType="textCapWords"
                 android:hint="Occupation" />
         </android.support.design.widget.TextInputLayout>
+
+        <TextView android:id="@+id/certificat_field"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Do you have a First-aid certificate ?"
+            android:gravity="center|left"
+            android:textSize="16dip" />
+
+        <!-- aid-certif Label-->
+        <Spinner
+            android:id="@+id/yes_no_spinner"
+            android:layout_below="@+id/gender_field"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
 
         <!-- Telephone number Label -->
@@ -242,22 +275,6 @@
                 android:hint="Email" />
         </android.support.design.widget.TextInputLayout>
 
-        <TextView android:id="@+id/dialect_field"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Spoken Dialect(s)"
-            android:gravity="center|left"
-            android:textSize="16dip" />
-
-        <!-- Dialect -->
-        <ListView
-            android:id="@+id/listDialect"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:choiceMode="multipleChoice" >
-        </ListView>
-
 
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
@@ -267,7 +284,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Create Account"
+            android:text="Continue"
             android:foregroundGravity="right" />
 
         <TextView android:id="@+id/link_login"

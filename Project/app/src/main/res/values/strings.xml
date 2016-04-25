@@ -1,16 +1,40 @@
 <resources>
-    <string name="app_name">Escort-App</string>
+    <string name="app_name">Elderly Out-patient Escort</string>
     <string name="action_settings">Settings</string>
     <string-array name="user_type">
         <item>Are you ?</item>
         <item>Escort</item>
         <item>Patient</item>
     </string-array>
+    <string-array name="yes_no">
+        <item>no</item>
+        <item>yes</item>
+    </string-array>
     <string-array name="listDialect">
         <item>Dialect 1</item>
         <item>Dialect 2</item>
         <item>Dialect 3</item>
         <item>Dialect 4</item>
+    </string-array>
+    <string-array name="listDistrict">
+        <item>Central and Western</item>
+        <item>Eastern</item>
+        <item>Southern</item>
+        <item>Wan Chai</item>
+        <item>Sham Shui Po</item>
+        <item>Kowloon City</item>
+        <item>Kwun Tong</item>
+        <item>Wong Tai Sin</item>
+        <item>Yau Tsim Mong</item>
+        <item>Islands</item>
+        <item>Kwai Tsing</item>
+        <item>North</item>
+        <item>Sai Kung</item>
+        <item>Sha Tin</item>
+        <item>Tai Po</item>
+        <item>Tsuen Wan </item>
+        <item>Tuen Mun</item>
+        <item>Yuen Long</item>
     </string-array>
     <string-array name="user_gender">
         <item>Male</item>
@@ -22,5 +46,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_escort">Escort</string>
+    <string name="title_activity_escort">Elderly Out-Patient Escort</string>
+    <string name="title_activity_escort_dialect_availibity_acitivity">
+        EscortDialectAvailibityAcitivity
+    </string>
+    <string name="title_activity_job_suggestions">JobSuggestionsActivity</string>
+    <string name="title_activity_pending_jobs">PendingJobsActivity</string>
+    <string name="title_activity_completed_job">CompletedJobActivity</string>
 </resources>

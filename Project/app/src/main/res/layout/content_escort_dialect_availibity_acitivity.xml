@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:paddingTop="56dp"
+android:paddingLeft="24dp"
+android:paddingRight="24dp">
+
+    <TextView
+        android:id="@+id/textDialect"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Which Dialect(s) do you speak ? " />
+
+    <ListView
+        android:id="@+id/listDialect"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:choiceMode="multipleChoice" >
+    </ListView>
+    <TextView
+        android:id="@+id/textAvaiibity"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="What are you availabilities ? " />
+
+
+</LinearLayout>
