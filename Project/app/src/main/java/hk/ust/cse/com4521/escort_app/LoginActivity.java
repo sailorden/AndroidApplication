@@ -22,10 +22,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final int REQUEST_SIGNUP = 0;
     private static final int SUCC_LOGIN = 0;
 
-    /*@InjectView(R.id.input_email) EditText _emailText;
-    @InjectView(R.id.input_password) EditText _passwordText;
-    @InjectView(R.id.btn_login) Button _loginButton;
-    @InjectView(R.id.link_signup) TextView _signupLink;*/
 
     private EditText _nameField ;
     private EditText _passwordField;
@@ -52,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View v) {
                 login();
                 Intent intent = new Intent(getApplicationContext(),Escort.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
+                startActivityForResult(intent, SUCC_LOGIN);
             }
         });
 
@@ -62,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View v) {
                 // Start the Signup activity
                 Intent intent = new Intent(getApplicationContext(),UserChoiceActivity.class);
-                startActivityForResult(intent, SUCC_LOGIN);
+                startActivityForResult(intent, REQUEST_SIGNUP );
             }
         });
     }

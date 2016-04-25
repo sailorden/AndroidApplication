@@ -49,29 +49,23 @@ public class EscortSignUpActivity extends AppCompatActivity {
         _first_aid_certif=(Spinner)findViewById(R.id.yes_no_spinner);
         //s_Dialect=(ListView)findViewById(R.id.listDialect);
 
-        // Create an ArrayAdapter using the string array and a default spinner layout
+        // preferred patient gender spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.user_gender, android.R.layout.simple_spinner_dropdown_item);
-        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         _patientGender.setAdapter(adapter);
 
 
-        // Create an ArrayAdapter using the string array and a default spinner layout
+        // Hk districts list
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.listDistrict, android.R.layout.simple_spinner_dropdown_item);
-        // Specify the layout to use when the list of choices appears
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         _HkDistrict.setAdapter(adapter2);
 
-        // Create an ArrayAdapter using the string array and a default spinner layout
+        // yes/no spinner
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
                 R.array.yes_no, android.R.layout.simple_spinner_dropdown_item);
-        // Specify the layout to use when the list of choices appears
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         _first_aid_certif.setAdapter(adapter3);
 
         _loginLink=(TextView)findViewById(R.id.link_login);
@@ -109,6 +103,7 @@ public class EscortSignUpActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
+        // create an Opbject user than user REtrofit to do post request
         String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
