@@ -110,9 +110,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Preferred patient gender"
+            android:text="Do you have any preference for the gender of the patient ?"
             android:gravity="center|left"
-            android:textSize="16dip" />
+            android:textSize="18dip"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp" />
 
         <!-- User gender Label-->
         <Spinner
@@ -212,7 +214,10 @@
             android:layout_marginBottom="24dp"
             android:text="Nearest District of Hong Kong"
             android:gravity="center|left"
-            android:textSize="16dip" />
+            android:textSize="18dip"
+            android:layout_marginTop="10dp"
+            android:textIsSelectable="true"
+            android:layout_marginLeft="5dp" />
 
         <!-- User gender Label-->
         <Spinner
@@ -233,6 +238,36 @@
                 android:inputType="textCapWords"
                 android:hint="Occupation" />
         </android.support.design.widget.TextInputLayout>
+        <TextView android:id="@+id/dialect_field"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="What dialect(s) do you speak ?"
+            android:gravity="center|left"
+            android:textSize="18dip"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp" />
+
+        <CheckBox
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Dialect 1"
+            android:checked="true" />
+        <CheckBox
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Dialect 2"
+            android:checked="true" />
+        <CheckBox
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Dialect 3"
+            android:checked="true" />
+        <CheckBox
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Dialect 4"
+            android:checked="true" />
 
         <TextView android:id="@+id/certificat_field"
             android:layout_width="fill_parent"
@@ -240,7 +275,9 @@
             android:layout_marginBottom="24dp"
             android:text="Do you have a First-aid certificate ?"
             android:gravity="center|left"
-            android:textSize="16dip" />
+            android:textSize="18dip"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp" />
 
         <!-- aid-certif Label-->
         <Spinner
@@ -275,6 +312,68 @@
                 android:hint="Email" />
         </android.support.design.widget.TextInputLayout>
 
+        <TextView android:id="@+id/avai_field"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Please add your availibitie(s) "
+            android:gravity="center|left"
+            android:textSize="18dip"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp" />
+
+        <Spinner
+            android:id="@+id/days_spinner"
+            android:layout_below="@+id/avai_field"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/time_spinner"
+            android:layout_below="@+id/days_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_add"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="Add"
+            android:foregroundGravity="right"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:orientation="vertical" />
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="My availabilities" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:textSize="8sp"
+                android:text=""
+                android:scrollbars="vertical"
+                android:maxLines = "100"
+                android:paddingLeft="5dip"
+                android:paddingTop="5dip" />
+
+        </TableRow>
+
+
+
+
+
 
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
@@ -284,7 +383,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Continue"
+            android:text="Sign up"
             android:foregroundGravity="right" />
 
         <TextView android:id="@+id/link_login"

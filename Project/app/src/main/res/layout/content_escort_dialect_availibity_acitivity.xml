@@ -24,7 +24,7 @@ android:paddingRight="24dp">
         android:id="@+id/textAvaiibity"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="What are you availabilities ? " />
+        android:text="What are you availabilities ? "/>
 
 
 </LinearLayout>
