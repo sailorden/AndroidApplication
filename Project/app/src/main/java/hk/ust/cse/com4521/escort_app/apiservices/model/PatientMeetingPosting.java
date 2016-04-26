@@ -1,13 +1,14 @@
 package hk.ust.cse.com4521.escort_app.apiservices.model;
-
 /**
  * Created by SGHAIER on 26/04/16.
  */
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 public class PatientMeetingPosting {
@@ -224,5 +225,6 @@ public class PatientMeetingPosting {
     }
 
 }
+
 
 
