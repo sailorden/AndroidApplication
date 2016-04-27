@@ -14,21 +14,33 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import hk.ust.cse.com4521.escort_app.apiservices.RestClient;
+import hk.ust.cse.com4521.escort_app.apiservices.model.UserAccount;
+
 public class EscortSignUpActivity extends AppCompatActivity {
 
 
     private static final String TAG = "EscortSignUpActivity";
     private static final int REQUEST_SIGNUP = 0;
 
+    RestClient restClient = RestClient.getInstance();
 
     private EditText _nameText;
     private EditText _firstNameText;
     private EditText _lastNameText;
+    private EditText _chineseFullName;
     private EditText _emailText;
     private EditText _passwordText;
+    private EditText _adress;
+    private EditText _bankAccountNum;
+    private EditText _membershipId;
     private Button _signupButton;
     private Button _addButton;
     private TextView _loginLink;
+    private TextView _myAvail;
     private Spinner _patientGender;
     private Spinner _HkDistrict;
     private Spinner _first_aid_certif;
@@ -40,6 +52,11 @@ public class EscortSignUpActivity extends AppCompatActivity {
     private String[] mDialect=null;
     private Spinner _days;
     private Spinner _timeSlot;
+
+    private UserAccount escortAccount;
+    private List<Integer> availabilities=new ArrayList<>(21);
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +71,15 @@ public class EscortSignUpActivity extends AppCompatActivity {
         _nameText=(EditText)findViewById(R.id.input_loginName);
         _firstNameText=(EditText)findViewById(R.id.input_firstName);
         _lastNameText=(EditText)findViewById(R.id.input_lastName);
+        _chineseFullName=(EditText)findViewById(R.id.input_chineseName);
         _emailText=(EditText)findViewById(R.id.input_email);
+        _membershipId=(EditText)findViewById(R.id.input_membershipID);
+        _adress=(EditText)findViewById(R.id.input_adress);
         _passwordText=(EditText)findViewById(R.id.input_password);
+        _bankAccountNum=(EditText)findViewById(R.id.input_bankAccount);
         _signupButton=(Button)findViewById(R.id.btn_signup);
         _addButton=(Button)findViewById(R.id.btn_add);
+        _myAvail=(TextView)findViewById(R.id.textA);
         _D1=(CheckBox)findViewById(R.id.D1);
         _D2=(CheckBox)findViewById(R.id.D2);
         _D3=(CheckBox)findViewById(R.id.D3);
@@ -67,6 +89,29 @@ public class EscortSignUpActivity extends AppCompatActivity {
         _first_aid_certif=(Spinner)findViewById(R.id.yes_no_spinner);
         _days=(Spinner)findViewById(R.id.days_spinner);
         _timeSlot=(Spinner)findViewById(R.id.time_spinner);
+
+    }
+
+    public List<Integer> getDialects(){
+        List<Integer> l=new ArrayList<>();
+        if (_D1.isChecked()) {
+            l.add(0,1);
+        }
+        else l.add(0,0);
+        if (_D2.isChecked()) {
+            l.add(1,1);
+        }
+        else l.add(1,0);
+        if (_D3.isChecked()) {
+            l.add(2,1);
+        }
+        else l.add(2,0);
+        if (_D4.isChecked()) {
+            l.add(3,1);
+        }
+        else l.add(3,0);
+
+        return l;
 
     }
     public void setAdapters(){
@@ -105,7 +150,10 @@ public class EscortSignUpActivity extends AppCompatActivity {
         _addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (!availabilities.contains(_days.getSelectedItemPosition()+_timeSlot.getSelectedItemPosition())) {
+                    availabilities.add(_days.getSelectedItemPosition() + _timeSlot.getSelectedItemPosition());
+                    _myAvail.append(_days.getSelectedItem().toString() + "  " + _timeSlot.getSelectedItem().toString() + "\n");
+                }
 
             }
         });
@@ -117,7 +165,7 @@ public class EscortSignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                signup();
+                restClient.createUser(getApplication(), createAccount());
             }
         });
 
@@ -130,6 +178,10 @@ public class EscortSignUpActivity extends AppCompatActivity {
         });
 
     }
+
+
+
+
 
     public void signup() {
         Log.d(TAG, "Signup");
@@ -208,6 +260,29 @@ public class EscortSignUpActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    public UserAccount createAccount(){
+        escortAccount=new UserAccount();
+        escortAccount.setUserRole(0); //0 as an escort ( if it's a patient it will be 1 )
+        escortAccount.setFirstName(_firstNameText.getText().toString());
+        escortAccount.setLastName(_lastNameText.getText().toString());
+        escortAccount.setChineseName(_chineseFullName.getText().toString());
+        escortAccount.setMembershipNum(_membershipId.getText().toString());
+        escortAccount.setBankAccountNum(_bankAccountNum.getText().toString());
+        escortAccount.setEmailAddress(_emailText.getText().toString());
+        escortAccount.setEscortPreferLocation(_adress.getText().toString());
+        escortAccount.setLoginName(_nameText.getText().toString());
+        escortAccount.setDialect(getDialects());
+        escortAccount.setEmailValidated(true);
+        escortAccount.setEscortPreferLocationDistrict(_HkDistrict.getSelectedItemPosition());
+        if (_first_aid_certif.getSelectedItem().toString().equals("yes")){
+            escortAccount.setFirstAidCert(true);
+        }
+        else escortAccount.setFirstAidCert(false);
+        escortAccount.setEscortAvaiTimeSlot(availabilities);
+        escortAccount.setPassword(_passwordText.getText().toString());
+        return escortAccount;
     }
 
 

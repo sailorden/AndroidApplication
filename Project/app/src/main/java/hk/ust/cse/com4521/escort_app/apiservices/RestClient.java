@@ -40,10 +40,13 @@ public class RestClient {
             @Override
             public void onResponse(Response<UserAccount> response) {
 
+                success = response.isSuccess();
                 if(success) {
-                    Toast.makeText(ctx, "User Created", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, "user Created", Toast.LENGTH_SHORT).show();
                 } else {
+                    Log.i("on response","je suis dans On response");
                     Toast.makeText(ctx, "Couldn't create user", Toast.LENGTH_SHORT).show();
+                    Log.i("on response", response.errorBody().contentType().toString());
                 }
             }
 
@@ -51,6 +54,7 @@ public class RestClient {
             public void onFailure(Throwable t) {
                 Log.w("REST", t.getMessage());
                 Toast.makeText(ctx, "Couldn't create user", Toast.LENGTH_SHORT).show();
+                Log.i("on response", "je suis dans On failure");
 
             }
         });

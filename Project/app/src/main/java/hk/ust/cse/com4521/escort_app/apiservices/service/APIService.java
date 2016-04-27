@@ -12,9 +12,9 @@ import retrofit.http.POST;
  * Created by SGHAIER on 25/04/16.
  */
 public interface APIService {
-    @POST("/api/user")
+    @POST("/api/UserAccounts")
     Call<UserAccount> createUser(@Body UserAccount user);
 
-    @GET("/api/user")
+    @GET("/api/UserAccounts")
     Call<List<UserAccount>> users();
 }

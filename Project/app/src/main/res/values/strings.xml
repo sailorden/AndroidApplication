@@ -17,10 +17,10 @@
         <item>Dialect 4</item>
     </string-array>
     <string-array name="timeList">
-        <item>8am --> 10 am</item>
-        <item>10am --> 12</item>
-        <item>12 --> 4pm</item>
-        <item>4pm --> 8pm </item>
+        <item>8am --> 12pm</item>
+        <item>12pm --> 4pm</item>
+        <item>4pm --> 8pm</item>
+
     </string-array>
     <string-array name="daysList">
         <item>Sunday</item>
