@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -26,36 +27,54 @@ public class EscortSignUpActivity extends AppCompatActivity {
     private EditText _emailText;
     private EditText _passwordText;
     private Button _signupButton;
+    private Button _addButton;
     private TextView _loginLink;
     private Spinner _patientGender;
     private Spinner _HkDistrict;
     private Spinner _first_aid_certif;
+    private CheckBox _D1;
+    private CheckBox _D2;
+    private CheckBox _D3;
+    private CheckBox _D4;
     private ListView _Dialect;
     private String[] mDialect=null;
+    private Spinner _days;
+    private Spinner _timeSlot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escort_sign_up);
+        getViews();
+        setAdapters();
+        setListeners();
+    }
 
+    public void getViews(){
         _nameText=(EditText)findViewById(R.id.input_loginName);
         _firstNameText=(EditText)findViewById(R.id.input_firstName);
         _lastNameText=(EditText)findViewById(R.id.input_lastName);
         _emailText=(EditText)findViewById(R.id.input_email);
         _passwordText=(EditText)findViewById(R.id.input_password);
         _signupButton=(Button)findViewById(R.id.btn_signup);
+        _addButton=(Button)findViewById(R.id.btn_add);
+        _D1=(CheckBox)findViewById(R.id.D1);
+        _D2=(CheckBox)findViewById(R.id.D2);
+        _D3=(CheckBox)findViewById(R.id.D3);
+        _D4=(CheckBox)findViewById(R.id.D4);
         _patientGender=(Spinner)findViewById(R.id.gender_spinner);
         _HkDistrict=(Spinner)findViewById(R.id.district_spinner);
         _first_aid_certif=(Spinner)findViewById(R.id.yes_no_spinner);
-        //s_Dialect=(ListView)findViewById(R.id.listDialect);
+        _days=(Spinner)findViewById(R.id.days_spinner);
+        _timeSlot=(Spinner)findViewById(R.id.time_spinner);
 
+    }
+    public void setAdapters(){
         // preferred patient gender spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.user_gender, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _patientGender.setAdapter(adapter);
-
-
         // Hk districts list
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.listDistrict, android.R.layout.simple_spinner_dropdown_item);
@@ -67,6 +86,30 @@ public class EscortSignUpActivity extends AppCompatActivity {
                 R.array.yes_no, android.R.layout.simple_spinner_dropdown_item);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _first_aid_certif.setAdapter(adapter3);
+
+        // days spinner
+        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
+                R.array.daysList, android.R.layout.simple_spinner_dropdown_item);
+        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        _days.setAdapter(adapter4);
+
+        // time spinner
+        ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this,
+                R.array.timeList, android.R.layout.simple_spinner_dropdown_item);
+        adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        _timeSlot.setAdapter(adapter5);
+
+    }
+
+    public void setListeners(){
+        _addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
 
         _loginLink=(TextView)findViewById(R.id.link_login);
 
@@ -85,6 +128,7 @@ public class EscortSignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
     public void signup() {

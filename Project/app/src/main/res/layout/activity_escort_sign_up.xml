@@ -249,21 +249,25 @@
             android:layout_marginLeft="5dp" />
 
         <CheckBox
+            android:id="@+id/D1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Dialect 1"
             android:checked="true" />
         <CheckBox
+            android:id="@+id/D2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Dialect 2"
             android:checked="true" />
         <CheckBox
+            android:id="@+id/D3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Dialect 3"
             android:checked="true" />
         <CheckBox
+            android:id="@+id/D4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Dialect 4"

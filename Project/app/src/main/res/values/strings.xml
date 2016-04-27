@@ -16,6 +16,21 @@
         <item>Dialect 3</item>
         <item>Dialect 4</item>
     </string-array>
+    <string-array name="timeList">
+        <item>8am --> 10 am</item>
+        <item>10am --> 12</item>
+        <item>12 --> 4pm</item>
+        <item>4pm --> 8pm </item>
+    </string-array>
+    <string-array name="daysList">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
     <string-array name="listDistrict">
         <item>Central and Western</item>
         <item>Eastern</item>
