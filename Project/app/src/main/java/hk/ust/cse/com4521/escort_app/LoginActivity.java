@@ -13,6 +13,10 @@ package hk.ust.cse.com4521.escort_app;
         import android.widget.EditText;
         import android.widget.TextView;
         import android.widget.Toast;
+
+        import hk.ust.cse.com4521.escort_app.apiservices.RestClient;
+        import hk.ust.cse.com4521.escort_app.apiservices.model.UserAccount;
+
 /**
  * Created by SGHAIER on 21/04/16.
  */
@@ -20,16 +24,18 @@ package hk.ust.cse.com4521.escort_app;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    private static final int SUCC_LOGIN = 0;
 
-    /*@InjectView(R.id.input_email) EditText _emailText;
-    @InjectView(R.id.input_password) EditText _passwordText;
-    @InjectView(R.id.btn_login) Button _loginButton;
-    @InjectView(R.id.link_signup) TextView _signupLink;*/
+    RestClient restClient = RestClient.getInstanceWithOutAccessToken();
 
     private EditText _nameField ;
     private EditText _passwordField;
     private Button _loginButton ;
     private TextView _signupLink;
+
+    boolean loginFlag = false;
+
+    private UserAccount Account;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,11 +50,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //ButterKnife.inject(this);
 
         // Set listner of differents events
-        _loginButton.setOnClickListener(new View.OnClickListener() {
+        _loginButton.setOnClickListener(
+                new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 login();
+                //Intent intent = new Intent(getApplicationContext(),Escort.class);
+                //startActivityForResult(intent, SUCC_LOGIN);
+                /*if(restClient.getLoginFlag())
+                {
+
+                    //switch to other screens
+                    Log.d("on response", "jump to escort screen");
+                    Intent intent = new Intent(getApplicationContext(),Escort.class);
+                    startActivityForResult(intent, SUCC_LOGIN);
+                }
+                else
+                {
+                    //screen remains unchange
+                    Log.d("on response", "do nothing to screen");
+                }
+                */
             }
         });
 
@@ -58,7 +81,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View v) {
                 // Start the Signup activity
                 Intent intent = new Intent(getApplicationContext(),UserChoiceActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
+                startActivityForResult(intent, REQUEST_SIGNUP );
             }
         });
     }
@@ -83,14 +106,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String password = _passwordField.getText().toString();
 
         // TODO: Implement your own authentication logic here.
+        restClient.loginUser(getApplication(), loginAccount());
 
-        new android.os.Handler().postDelayed(
+
+
+
+                new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        //progressDialog.dismiss();
+                        if(restClient.getLoginFlag()) {
+                            onLoginSuccess();
+                        }
+                        else {
+                            onLoginFailed();
+                            progressDialog.dismiss();
+                        }
+                        progressDialog.dismiss();
                     }
                 }, 3000);
     }
@@ -116,7 +148,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-        finish();
+        Intent intent = new Intent(getApplicationContext(),Escort.class);
+        startActivityForResult(intent, SUCC_LOGIN);
+
+        //finish();
     }
 
     public void onLoginFailed() {
@@ -154,5 +189,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
 
+    }
+
+    public UserAccount loginAccount(){
+        Account=new UserAccount();
+        Account.setUsername(_nameField.getText().toString());
+        Account.setPassword(_passwordField.getText().toString());
+        return Account;
     }
 }

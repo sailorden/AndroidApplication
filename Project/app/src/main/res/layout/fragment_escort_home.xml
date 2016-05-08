@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView android:src="@drawable/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignBottom="@+id/btn_jobSuggestions"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp" />
+
+    <Button
+        android:id="@+id/btn_jobSuggestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Job Suggestions"
+        android:gravity="center"
+        android:layout_above="@+id/btn_pendingJobs"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp" />
+    <Button
+        android:id="@+id/btn_pendingJobs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pendings Jobs"
+        android:gravity="center"
+        android:layout_above="@+id/btn_completedJobs"
+        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/btn_jobSuggestions"
+        android:layout_alignStart="@+id/btn_jobSuggestions"
+        android:layout_alignRight="@+id/btn_completedJobs"
+        android:layout_alignEnd="@+id/btn_completedJobs" />
+    <Button
+        android:id="@+id/btn_completedJobs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Completed Jobs"
+        android:gravity="left"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/btn_jobSuggestions"
+        android:layout_alignEnd="@+id/btn_jobSuggestions"
+        android:layout_marginBottom="170dp"
+        android:layout_alignLeft="@+id/btn_jobSuggestions"
+        android:layout_alignStart="@+id/btn_jobSuggestions" />
+
+
+</RelativeLayout>
