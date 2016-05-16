@@ -10,9 +10,11 @@ public class UserAccountManagementActivity extends AppCompatActivity {
 
     private static final int CREATE_STAFF_ACCOUNT = 0;
     private static final int DELETE_USER_ACCOUNT = 0;
+    private static final int DELETE_USER_ACCOUNT_BY_YMCAid = 0;
 
     private Button _createStaffSAccountButton=null;
     private Button _deleteAccountButton=null;
+    private Button _deleteAccountByYMCAidButton=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class UserAccountManagementActivity extends AppCompatActivity {
 
         _createStaffSAccountButton=(Button)findViewById(R.id.btn_createStaffAccount);
         _deleteAccountButton=(Button)findViewById(R.id.btn_deleteAccount);
+        _deleteAccountByYMCAidButton=(Button)findViewById(R.id.btn_deleteAccountByYMCAid);
 
         _createStaffSAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,5 +42,15 @@ public class UserAccountManagementActivity extends AppCompatActivity {
 
             }
         });
+
+        _deleteAccountByYMCAidButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), DeleteUserAccountByYMCAidActivity.class);
+                startActivityForResult(intent, DELETE_USER_ACCOUNT_BY_YMCAid);
+
+            }
+        });
+
     }
 }

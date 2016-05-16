@@ -43,6 +43,8 @@ public interface APIService {
     Call<List<UserAccount>> findAccountByUserName(@QueryMap ImmutableMap param);
     @GET("/api/UserAccounts")
     Call<List<UserAccount>> getUserAccountsByName(@QueryMap ImmutableMap param);
+    @GET("/api/UserAccounts")
+    Call<List<UserAccount>> getUserAccountsByYMCAid(@QueryMap ImmutableMap param);
     @DELETE("/api/UserAccounts/{id}")
     Call<UserAccount> deleteAccountByUserId(@Path("id") String id);
 

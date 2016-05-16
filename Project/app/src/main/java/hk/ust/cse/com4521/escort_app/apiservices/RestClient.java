@@ -197,6 +197,55 @@ public class RestClient {
         return (userAccounts);
     }
 
+    //for deleteUserAccount by name module by TANG  08/05/2016
+    public List<UserAccount> getUserAccountListByYMCAid(String YMCAid) {
+
+        Log.i("drapeau:", "running getUserAccountListByYMCAid");
+        //final Map parameters = ImmutableMap.of("filter[where][firstName]",firstName);
+        final Map parameters = ImmutableMap.of("filter[where][membershipNum]",YMCAid);
+        final Call < List < UserAccount >> userAccountListByYMCAid = service.getUserAccountsByYMCAid((ImmutableMap) parameters);
+        //final Call < List < UserAccount >> userAccountListByName = service.getUserAccountsByName();
+        //Log.i("The string",parameters.toString());
+        Log.i("drapeau:","ready to enqueue");
+        userAccountListByYMCAid.enqueue(new Callback<List<UserAccount>>() {
+
+            @Override
+            public void onResponse(Response<List<UserAccount>> response) {
+                Log.i("drapeau:", "requesting");
+                if (response.isSuccess()) {
+                    Log.e("On response jobs", "success getUserAccountList");
+                    userAccounts = response.body();
+
+                    for(UserAccount userAccount: userAccounts)
+                    {
+                        Log.e("username ", userAccount.getUsername().toString());
+                        Log.e("username ", userAccount.getEmail().toString());
+                        //list.add(userAccount.getUsername());
+                    }
+                    //callBack4.searchUserAccountResultReady(response.body());
+                    //Log.e("listSize", response.body().status.toString());
+                    //callback.resultReady(meetings);
+                } else {
+                    Log.i("onResponse failure", response.errorBody().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.i("REST", "on Response failure 2");
+                Log.e("REST", t.getMessage());
+            }
+        });
+        Log.i("drapeau:", "getUserAccountList return");
+        return userAccounts;
+
+    }
+
+    public List<UserAccount> getUserAccountsByYMCAid()
+    {
+        return (userAccounts);
+    }
+
 
     //for UserAccountDetailActivity by TANG   16/05/2016
     public void deleteUserById(final Context ctx, final String userId) {
@@ -209,9 +258,9 @@ public class RestClient {
 
                 if (response.isSuccess()) {
 
-                    Log.i("on response", "user is deleted");
+                    Log.i("on response", "User is deleted "+ userId);
 //                  Log.i("get post id", response.body().getUsername());
-                    Toast.makeText(ctx, "User account was deleted. " + userId, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx, "User account was deleted." , Toast.LENGTH_SHORT).show();
 
                     //callBack3.userAccountReady(user);
                 } else {

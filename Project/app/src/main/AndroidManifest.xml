@@ -62,7 +62,8 @@
         <activity android:name=".UserAccountManagementActivity" />
         <activity android:name=".CreateStaffAccountActivity" />
         <activity android:name=".DeleteUserAccountActivity" />
-        <activity android:name=".UserAccountDetailActivity"></activity>
+        <activity android:name=".UserAccountDetailActivity" />
+        <activity android:name=".DeleteUserAccountByYMCAidActivity"></activity>
     </application>
 
 </manifest>

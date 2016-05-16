@@ -1,5 +1,7 @@
 package hk.ust.cse.com4521.escort_app;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +25,7 @@ public class UserAccountDetailActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter = null;
     private ArrayList<String> list = new ArrayList<String>();
     private Button _deleteUserButton=null;
+    AlertDialog.Builder builder1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,7 @@ public class UserAccountDetailActivity extends AppCompatActivity {
         Log.i("Username detailPage", userAccountInfo[0]);
         // get jobId from the previous activity
         userId = in.getStringExtra("USER_ID");
-        Log.i("user id printed in detail", userId);
+        Log.i("user id detail", userId);
 
 
         for (int i=0; i<9; i++) {
@@ -52,6 +55,39 @@ public class UserAccountDetailActivity extends AppCompatActivity {
             list.add(userAccountInfo[i]);
 
         }
+
+        //call alert dialog after the delete user button was pressed
+        builder1 = new AlertDialog.Builder(UserAccountDetailActivity.this);
+        builder1.setMessage("Are you sure that you want to permanently delete the selected user?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        Log.i("deleting user account ", userId);
+                        restClient.deleteUserById(getApplicationContext(), userId);
+
+                        new android.os.Handler().postDelayed(
+                                new Runnable() {
+                                    public void run() {
+                                        finish();
+                                    }
+                                }, 300);
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        _deleteUserButton.setEnabled(true);
+                    }
+                });
+
+
 
 
         adapter.notifyDataSetChanged();
@@ -62,31 +98,13 @@ public class UserAccountDetailActivity extends AppCompatActivity {
                 //restClient.getUserAccountList("ppppp", "ppppp");
                 _deleteUserButton.setEnabled(false);
 
-                Log.i("deleting user account ", userId);
-                restClient.deleteUserById(getApplicationContext(), userId);
-
-                new android.os.Handler().postDelayed(
-                        new Runnable() {
-                            public void run() {
-                                finish();
 
 
-                                //userAccounts.removeAll(userAccounts);
-                               /* userAccounts = restClient.getUserAccountsByName();
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
 
-                                if (userAccounts.size() > 0) {
-                                    for (UserAccount userAccount : userAccounts) {
-                                        Log.i("username view", userAccount.getUsername().toString());
-                                        list.add(userAccount.getUsername().toString());
-                                    }
-                                }
-                                //progressDialog.dismiss();
 
-                                adapter.notifyDataSetChanged();
-                                _searchButton.setEnabled(true);
-                                */
-                            }
-                        }, 300);
+
 
 
             }
