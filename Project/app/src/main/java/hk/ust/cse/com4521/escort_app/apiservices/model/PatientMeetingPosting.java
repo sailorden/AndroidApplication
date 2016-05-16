@@ -12,9 +12,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class PatientMeetingPosting {
 
-    @SerializedName("userID")
-    @Expose
-    private String userID;
     @SerializedName("meetingDate")
     @Expose
     private String meetingDate;
@@ -42,24 +39,13 @@ public class PatientMeetingPosting {
     @SerializedName("id")
     @Expose
     private String id;
-
-    /**
-     *
-     * @return
-     * The userID
-     */
-    public String getUserID() {
-        return userID;
-    }
-
-    /**
-     *
-     * @param userID
-     * The userID
-     */
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
+    @SerializedName("patientIDPatientMeetingPosting")
+    @Expose
+    private String patientIDPatientMeetingPosting;
+    @SerializedName("patientId")
+    @Expose
+    private String patientId;
+    public UserAccount patient;
 
     /**
      *
@@ -221,6 +207,42 @@ public class PatientMeetingPosting {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    /**
+     *
+     * @return
+     * The patientIDPatientMeetingPosting
+     */
+    public String getPatientIDPatientMeetingPosting() {
+        return patientIDPatientMeetingPosting;
+    }
+
+    /**
+     *
+     * @param patientIDPatientMeetingPosting
+     * The patientIDPatientMeetingPosting
+     */
+    public void setPatientIDPatientMeetingPosting(String patientIDPatientMeetingPosting) {
+        this.patientIDPatientMeetingPosting = patientIDPatientMeetingPosting;
+    }
+
+    /**
+     *
+     * @return
+     * The patientId
+     */
+    public String getPatientId() {
+        return patientId;
+    }
+
+    /**
+     *
+     * @param patientId
+     * The patientId
+     */
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
     }
 
 }

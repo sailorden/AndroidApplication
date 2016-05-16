@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pending_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="56dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:gravity="center|center_vertical|center_horizontal">
+
+    <LinearLayout
+        android:id="@+id/listLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ListView
+            android:id="@+id/listDetails"
+            android:layout_width="match_parent"
+            android:layout_height="379dp">
+        </ListView>
+
+    </LinearLayout>
+
+
+    <Button android:id="@+id/btnCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Completed"
+        android:gravity="center|center_vertical|center_horizontal"
+        android:foregroundGravity="center"
+        android:layout_below="@+id/listLayout"
+        android:layout_centerHorizontal="true" />
+
+
+
+
+
+
+</RelativeLayout>
+

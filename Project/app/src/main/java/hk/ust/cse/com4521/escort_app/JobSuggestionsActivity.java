@@ -25,11 +25,11 @@ public class JobSuggestionsActivity extends AppCompatActivity {
     private static final int JOB_DETAIL = 0;
     public final static String meetingId = "hk.ust.cse.com4521.escort_app.meetingId";
 
-    private List<MeetingHistories > _listJobs=null;
+    protected List<MeetingHistories > _listJobs=null;
     private String _escortId; // we need to use intent to have this id frm the precendent activity
     private List<String> postsId=new ArrayList<>();
-    RestClient restClient = RestClient.getInstance();
-    RestClient.ResultReadyCallback callback = new RestClient.ResultReadyCallback() {
+    RestClient restClient = RestClient.getInstanceWithAccessToken();
+    /*RestClient.ResultReadyCallback callback = new RestClient.ResultReadyCallback() {
         @Override
         public void resultReady(List<MeetingHistories> meetings) {
             for(MeetingHistories meeting: meetings) {
@@ -41,7 +41,12 @@ public class JobSuggestionsActivity extends AppCompatActivity {
 
             ((ArrayAdapter) mAdapter).notifyDataSetChanged();
         }
-    };
+        @Override
+        public void resultPostingReady(List<PatientMeetingPosting> l){
+
+
+        }
+    };*/
 
 
 
@@ -59,11 +64,12 @@ public class JobSuggestionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_suggestions);
         _list=(ListView)findViewById(R.id.listJobs);
-        restClient.setCallback(callback);
+        //restClient.setCallback(callback);
         mAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, titles);
         _list.setAdapter(mAdapter);
 
+        //restClient.getMeetings("2","string");
         restClient.getMeetings("1","test");
         _list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -2,7 +2,6 @@ package hk.ust.cse.com4521.escort_app.apiservices.model;
 
 /**
  * Created by SGHAIER on 25/04/16.
- * Modified by TANG on 08/05/16.
  */
 
 
@@ -15,14 +14,9 @@ package hk.ust.cse.com4521.escort_app.apiservices.model;
 
 public class UserAccount {
 
-        @SerializedName("userId")
-        @Expose
-        private String userId;
-
-
-        @SerializedName("password")
-        @Expose
-        private String password;
+         @SerializedName("password")
+         @Expose
+         private String password;
 
         @SerializedName("bankAccountNum")
         @Expose
@@ -130,7 +124,7 @@ public class UserAccount {
          * The bankAccountNum
          */
         public String getBankAccountNum() {
-            return bankAccountNum;
+                return bankAccountNum;
         }
 
         /**
@@ -139,7 +133,7 @@ public class UserAccount {
          * The bankAccountNum
          */
         public void setBankAccountNum(String bankAccountNum) {
-            this.bankAccountNum = bankAccountNum;
+                this.bankAccountNum = bankAccountNum;
         }
 
         /**
@@ -148,7 +142,7 @@ public class UserAccount {
          * The chineseName
          */
         public String getChineseName() {
-            return chineseName;
+                return chineseName;
         }
 
         /**
@@ -157,7 +151,7 @@ public class UserAccount {
          * The chineseName
          */
         public void setChineseName(String chineseName) {
-            this.chineseName = chineseName;
+                this.chineseName = chineseName;
         }
 
         /**
@@ -166,7 +160,7 @@ public class UserAccount {
          * The dateOfBirth
          */
         public String getDateOfBirth() {
-            return dateOfBirth;
+                return dateOfBirth;
         }
 
         /**
@@ -175,7 +169,7 @@ public class UserAccount {
          * The dateOfBirth
          */
         public void setDateOfBirth(String dateOfBirth) {
-            this.dateOfBirth = dateOfBirth;
+                this.dateOfBirth = dateOfBirth;
         }
 
         /**
@@ -184,7 +178,7 @@ public class UserAccount {
          * The dialect
          */
         public List<Integer> getDialect() {
-            return dialect;
+                return dialect;
         }
 
         /**
@@ -193,7 +187,7 @@ public class UserAccount {
          * The dialect
          */
         public void setDialect(List<Integer> dialect) {
-            this.dialect = dialect;
+                this.dialect = dialect;
         }
 
         /**
@@ -202,7 +196,7 @@ public class UserAccount {
          * The escortAvaiTimeSlot
          */
         public List<Integer> getEscortAvaiTimeSlot() {
-            return escortAvaiTimeSlot;
+                return escortAvaiTimeSlot;
         }
 
         /**
@@ -211,7 +205,7 @@ public class UserAccount {
          * The escortAvaiTimeSlot
          */
         public void setEscortAvaiTimeSlot(List<Integer> escortAvaiTimeSlot) {
-            this.escortAvaiTimeSlot = escortAvaiTimeSlot;
+                this.escortAvaiTimeSlot = escortAvaiTimeSlot;
         }
 
         /**
@@ -220,7 +214,7 @@ public class UserAccount {
          * The escortPreferLocation
          */
         public String getEscortPreferLocation() {
-            return escortPreferLocation;
+                return escortPreferLocation;
         }
 
         /**
@@ -229,7 +223,7 @@ public class UserAccount {
          * The escortPreferLocation
          */
         public void setEscortPreferLocation(String escortPreferLocation) {
-            this.escortPreferLocation = escortPreferLocation;
+                this.escortPreferLocation = escortPreferLocation;
         }
 
         /**
@@ -238,7 +232,7 @@ public class UserAccount {
          * The experience
          */
         public String getExperience() {
-            return experience;
+                return experience;
         }
 
         /**
@@ -247,7 +241,7 @@ public class UserAccount {
          * The experience
          */
         public void setExperience(String experience) {
-            this.experience = experience;
+                this.experience = experience;
         }
 
         /**
@@ -256,7 +250,7 @@ public class UserAccount {
          * The firstAidCert
          */
         public Boolean getFirstAidCert() {
-            return firstAidCert;
+                return firstAidCert;
         }
 
         /**
@@ -265,7 +259,7 @@ public class UserAccount {
          * The firstAidCert
          */
         public void setFirstAidCert(Boolean firstAidCert) {
-            this.firstAidCert = firstAidCert;
+                this.firstAidCert = firstAidCert;
         }
 
         /**
@@ -274,7 +268,7 @@ public class UserAccount {
          * The firstName
          */
         public String getFirstName() {
-            return firstName;
+                return firstName;
         }
 
         /**
@@ -283,7 +277,7 @@ public class UserAccount {
          * The firstName
          */
         public void setFirstName(String firstName) {
-            this.firstName = firstName;
+                this.firstName = firstName;
         }
 
         /**
@@ -292,7 +286,7 @@ public class UserAccount {
          * The gender
          */
         public Integer getGender() {
-            return gender;
+                return gender;
         }
 
         /**
@@ -301,7 +295,7 @@ public class UserAccount {
          * The gender
          */
         public void setGender(Integer gender) {
-            this.gender = gender;
+                this.gender = gender;
         }
 
         /**
@@ -310,7 +304,7 @@ public class UserAccount {
          * The height
          */
         public Integer getHeight() {
-            return height;
+                return height;
         }
 
         /**
@@ -319,7 +313,7 @@ public class UserAccount {
          * The height
          */
         public void setHeight(Integer height) {
-            this.height = height;
+                this.height = height;
         }
 
         /**
@@ -328,7 +322,7 @@ public class UserAccount {
          * The lastName
          */
         public String getLastName() {
-            return lastName;
+                return lastName;
         }
 
         /**
@@ -337,7 +331,7 @@ public class UserAccount {
          * The lastName
          */
         public void setLastName(String lastName) {
-            this.lastName = lastName;
+                this.lastName = lastName;
         }
 
         /**
@@ -346,7 +340,7 @@ public class UserAccount {
          * The membershipNum
          */
         public String getMembershipNum() {
-            return membershipNum;
+                return membershipNum;
         }
 
         /**
@@ -355,7 +349,7 @@ public class UserAccount {
          * The membershipNum
          */
         public void setMembershipNum(String membershipNum) {
-            this.membershipNum = membershipNum;
+                this.membershipNum = membershipNum;
         }
 
         /**
@@ -364,7 +358,7 @@ public class UserAccount {
          * The occupation
          */
         public String getOccupation() {
-            return occupation;
+                return occupation;
         }
 
         /**
@@ -373,7 +367,7 @@ public class UserAccount {
          * The occupation
          */
         public void setOccupation(String occupation) {
-            this.occupation = occupation;
+                this.occupation = occupation;
         }
 
         /**
@@ -382,7 +376,7 @@ public class UserAccount {
          * The profilePicName
          */
         public String getProfilePicName() {
-            return profilePicName;
+                return profilePicName;
         }
 
         /**
@@ -391,7 +385,7 @@ public class UserAccount {
          * The profilePicName
          */
         public void setProfilePicName(String profilePicName) {
-            this.profilePicName = profilePicName;
+                this.profilePicName = profilePicName;
         }
 
         /**
@@ -400,7 +394,7 @@ public class UserAccount {
          * The residentialAddress
          */
         public String getResidentialAddress() {
-            return residentialAddress;
+                return residentialAddress;
         }
 
         /**
@@ -409,7 +403,7 @@ public class UserAccount {
          * The residentialAddress
          */
         public void setResidentialAddress(String residentialAddress) {
-            this.residentialAddress = residentialAddress;
+                this.residentialAddress = residentialAddress;
         }
 
         /**
@@ -418,7 +412,7 @@ public class UserAccount {
          * The skills
          */
         public String getSkills() {
-            return skills;
+                return skills;
         }
 
         /**
@@ -427,7 +421,7 @@ public class UserAccount {
          * The skills
          */
         public void setSkills(String skills) {
-            this.skills = skills;
+                this.skills = skills;
         }
 
         /**
@@ -436,7 +430,7 @@ public class UserAccount {
          * The telephoneNum
          */
         public String getTelephoneNum() {
-            return telephoneNum;
+                return telephoneNum;
         }
 
         /**
@@ -445,7 +439,7 @@ public class UserAccount {
          * The telephoneNum
          */
         public void setTelephoneNum(String telephoneNum) {
-            this.telephoneNum = telephoneNum;
+                this.telephoneNum = telephoneNum;
         }
 
         /**
@@ -454,7 +448,7 @@ public class UserAccount {
          * The userRole
          */
         public Integer getUserRole() {
-            return userRole;
+                return userRole;
         }
 
         /**
@@ -463,7 +457,7 @@ public class UserAccount {
          * The userRole
          */
         public void setUserRole(Integer userRole) {
-            this.userRole = userRole;
+                this.userRole = userRole;
         }
 
         /**
@@ -472,7 +466,7 @@ public class UserAccount {
          * The userValidated
          */
         public Boolean getUserValidated() {
-            return userValidated;
+                return userValidated;
         }
 
         /**
@@ -481,7 +475,7 @@ public class UserAccount {
          * The userValidated
          */
         public void setUserValidated(Boolean userValidated) {
-            this.userValidated = userValidated;
+                this.userValidated = userValidated;
         }
 
         /**
@@ -490,7 +484,7 @@ public class UserAccount {
          * The weight
          */
         public Integer getWeight() {
-            return weight;
+                return weight;
         }
 
         /**
@@ -499,7 +493,7 @@ public class UserAccount {
          * The weight
          */
         public void setWeight(Integer weight) {
-            this.weight = weight;
+                this.weight = weight;
         }
 
         /**
@@ -508,7 +502,7 @@ public class UserAccount {
          * The wheelChair
          */
         public Boolean getWheelChair() {
-            return wheelChair;
+                return wheelChair;
         }
 
         /**
@@ -517,7 +511,7 @@ public class UserAccount {
          * The wheelChair
          */
         public void setWheelChair(Boolean wheelChair) {
-            this.wheelChair = wheelChair;
+                this.wheelChair = wheelChair;
         }
 
         /**
@@ -526,7 +520,7 @@ public class UserAccount {
          * The escortPreferLocationDistrict
          */
         public Integer getEscortPreferLocationDistrict() {
-            return escortPreferLocationDistrict;
+                return escortPreferLocationDistrict;
         }
 
         /**
@@ -535,7 +529,7 @@ public class UserAccount {
          * The escortPreferLocationDistrict
          */
         public void setEscortPreferLocationDistrict(Integer escortPreferLocationDistrict) {
-            this.escortPreferLocationDistrict = escortPreferLocationDistrict;
+                this.escortPreferLocationDistrict = escortPreferLocationDistrict;
         }
 
         /**
@@ -544,7 +538,7 @@ public class UserAccount {
          * The realm
          */
         public String getRealm() {
-            return realm;
+                return realm;
         }
 
         /**
@@ -553,7 +547,7 @@ public class UserAccount {
          * The realm
          */
         public void setRealm(String realm) {
-            this.realm = realm;
+                this.realm = realm;
         }
 
         /**
@@ -562,7 +556,7 @@ public class UserAccount {
          * The username
          */
         public String getUsername() {
-            return username;
+                return username;
         }
 
         /**
@@ -571,7 +565,7 @@ public class UserAccount {
          * The username
          */
         public void setUsername(String username) {
-            this.username = username;
+                this.username = username;
         }
 
         /**
@@ -580,7 +574,7 @@ public class UserAccount {
          * The credentials
          */
         public Credentials getCredentials() {
-            return credentials;
+                return credentials;
         }
 
         /**
@@ -589,7 +583,7 @@ public class UserAccount {
          * The credentials
          */
         public void setCredentials(Credentials credentials) {
-            this.credentials = credentials;
+                this.credentials = credentials;
         }
 
         /**
@@ -598,7 +592,7 @@ public class UserAccount {
          * The challenges
          */
         public Challenges getChallenges() {
-            return challenges;
+                return challenges;
         }
 
         /**
@@ -607,7 +601,7 @@ public class UserAccount {
          * The challenges
          */
         public void setChallenges(Challenges challenges) {
-            this.challenges = challenges;
+                this.challenges = challenges;
         }
 
         /**
@@ -616,7 +610,7 @@ public class UserAccount {
          * The email
          */
         public String getEmail() {
-            return email;
+                return email;
         }
 
         /**
@@ -625,7 +619,7 @@ public class UserAccount {
          * The email
          */
         public void setEmail(String email) {
-            this.email = email;
+                this.email = email;
         }
 
         /**
@@ -634,7 +628,7 @@ public class UserAccount {
          * The emailVerified
          */
         public Boolean getEmailVerified() {
-            return emailVerified;
+                return emailVerified;
         }
 
         /**
@@ -643,7 +637,7 @@ public class UserAccount {
          * The emailVerified
          */
         public void setEmailVerified(Boolean emailVerified) {
-            this.emailVerified = emailVerified;
+                this.emailVerified = emailVerified;
         }
 
         /**
@@ -652,7 +646,7 @@ public class UserAccount {
          * The status
          */
         public String getStatus() {
-            return status;
+                return status;
         }
 
         /**
@@ -661,7 +655,7 @@ public class UserAccount {
          * The status
          */
         public void setStatus(String status) {
-            this.status = status;
+                this.status = status;
         }
 
         /**
@@ -670,7 +664,7 @@ public class UserAccount {
          * The created
          */
         public String getCreated() {
-            return created;
+                return created;
         }
 
         /**
@@ -679,7 +673,7 @@ public class UserAccount {
          * The created
          */
         public void setCreated(String created) {
-            this.created = created;
+                this.created = created;
         }
 
         /**
@@ -688,7 +682,7 @@ public class UserAccount {
          * The lastUpdated
          */
         public String getLastUpdated() {
-            return lastUpdated;
+                return lastUpdated;
         }
 
         /**
@@ -697,7 +691,7 @@ public class UserAccount {
          * The lastUpdated
          */
         public void setLastUpdated(String lastUpdated) {
-            this.lastUpdated = lastUpdated;
+                this.lastUpdated = lastUpdated;
         }
 
         /**
@@ -706,7 +700,7 @@ public class UserAccount {
          * The id
          */
         public String getId() {
-            return id;
+                return id;
         }
 
         /**
@@ -715,18 +709,16 @@ public class UserAccount {
          * The id
          */
         public void setId(String id) {
-            this.id = id;
+                this.id = id;
         }
 
-
-    public String getPassword() { return password; }
+        public String getPassword() {
+        return password;
+    }
 
     public void setPassword(String password) {
         this.password = password;
     }
-
-        //for login
-        public String getuserId() { return userId; }
 }
 
 

@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="hk.ust.cse.com4521.escort_app.PendingJobsActivity"
-    tools:showIn="@layout/activity_pending_jobs">
+    tools:context="hk.ust.cse.com4521.escort_app.PendingJobDetailActivity"
+    tools:showIn="@layout/activity_pending_job_detail">
 
 </RelativeLayout>

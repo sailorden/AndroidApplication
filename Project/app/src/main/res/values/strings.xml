@@ -11,10 +11,11 @@
         <item>yes</item>
     </string-array>
     <string-array name="listDialect">
-        <item>Dialect 1</item>
-        <item>Dialect 2</item>
-        <item>Dialect 3</item>
-        <item>Dialect 4</item>
+        <item>Cantonese</item>
+        <item>Mandarin</item>
+        <item>Hakka</item>
+        <item>Chaozhou</item>
+        <item>English</item>
     </string-array>
     <string-array name="timeList">
         <item>8am --> 12pm</item>
@@ -69,4 +70,9 @@
     <string name="title_activity_pending_jobs">PendingJobsActivity</string>
     <string name="title_activity_completed_job">CompletedJobActivity</string>
     <string name="title_activity_meeting_details">MeetingDetailsActivity</string>
+    <string name="title_activity_job_sugg">JobSugg</string>
+    <string name="title_activity_job_details">JobDetailsActivity</string>
+    <string name="title_activity_pending_job_detail">PendingJobDetailActivity</string>
+    <string name="title_activity_completed_job_detail">CompletedJobDetailActivity</string>
+    <string name="title_activity_staff_home">StaffHomeActivity</string>
 </resources>

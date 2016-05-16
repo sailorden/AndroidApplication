@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:name="hk.ust.cse.com4521.escort_app.StaffHomeActivityFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:layout="@layout/fragment_staff_home" >
+
+    <Button
+        android:id="@+id/btn_escortValidation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escort Validation"
+        android:gravity="center"
+        android:layout_marginTop="174dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/btn_patientEscortPairing"
+        android:layout_alignEnd="@+id/btn_patientEscortPairing"
+        android:layout_alignLeft="@+id/btn_patientEscortPairing"
+        android:layout_alignStart="@+id/btn_patientEscortPairing" />
+
+    <ImageView
+        android:src="@drawable/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/imageView"
+        android:layout_alignBottom="@+id/btn_escortValidation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp" />
+
+    <Button
+        android:id="@+id/btn_patientEscortPairing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient-Escort Pairing"
+        android:gravity="center"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/btn_userAccountManagement"
+        android:layout_alignStart="@+id/btn_userAccountManagement"
+        android:layout_alignRight="@+id/btn_userAccountManagement"
+        android:layout_alignEnd="@+id/btn_userAccountManagement" />
+
+    <Button
+        android:id="@+id/btn_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notification"
+        android:gravity="center"
+        android:layout_below="@+id/btn_userAccountManagement"
+        android:layout_alignLeft="@+id/btn_userAccountManagement"
+        android:layout_alignStart="@+id/btn_userAccountManagement"
+        android:layout_alignRight="@+id/btn_userAccountManagement"
+        android:layout_alignEnd="@+id/btn_userAccountManagement" />
+
+    <Button
+        android:id="@+id/btn_userAccountManagement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User-account Management"
+        android:gravity="center"
+        android:layout_below="@+id/btn_patientEscortPairing"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Report Generation"
+        android:id="@+id/btn_reportGeneration"
+        android:layout_below="@+id/btn_notification"
+        android:layout_alignLeft="@+id/btn_notification"
+        android:layout_alignStart="@+id/btn_notification"
+        android:layout_alignRight="@+id/btn_notification"
+        android:layout_alignEnd="@+id/btn_notification" />
+
+</RelativeLayout>

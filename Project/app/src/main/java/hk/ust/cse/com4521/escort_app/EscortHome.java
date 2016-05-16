@@ -42,8 +42,9 @@ public class EscortHome extends Fragment{
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),JobSuggestionsActivity.class);
-                startActivityForResult(intent,JOB_SUGG );
+                Intent intent = new Intent(getActivity(),JobSugg.class);
+                intent.putExtra("SELECT",1);
+                startActivityForResult(intent, JOB_SUGG);
             }
         });
 
@@ -52,7 +53,8 @@ public class EscortHome extends Fragment{
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),PendingJobsActivity.class);
+                Intent intent = new Intent(getActivity(),JobSugg.class);
+                intent.putExtra("SELECT",2);
                 startActivityForResult(intent, PEND_JOB);
             }
         });
@@ -62,7 +64,8 @@ public class EscortHome extends Fragment{
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),CompletedJobActivity.class);
+                Intent intent = new Intent(getActivity(),JobSugg.class);
+                intent.putExtra("SELECT",3);
                 startActivityForResult(intent,COMP_JOB );
             }
         });

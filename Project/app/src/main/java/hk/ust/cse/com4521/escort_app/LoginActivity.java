@@ -3,12 +3,15 @@ package hk.ust.cse.com4521.escort_app;
 
 
         import android.app.ProgressDialog;
+        import android.content.SharedPreferences;
         import android.os.Bundle;
+        import android.preference.PreferenceManager;
         import android.support.v7.app.AppCompatActivity;
         import android.util.Log;
 
         import android.content.Intent;
         import android.view.View;
+        import android.widget.ArrayAdapter;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.TextView;
@@ -26,7 +29,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final int REQUEST_SIGNUP = 0;
     private static final int SUCC_LOGIN = 0;
 
-    RestClient restClient = RestClient.getInstanceWithOutAccessToken();
+
+    private int userRole=-9;
+    RestClient restClient=RestClient.getInstanceWithoutAccessToken();
+    RestClient.ResultReadyCallbackLoginActivity callback = new RestClient.ResultReadyCallbackLoginActivity() {
+        @Override
+        public void responseLoginReady(LoginActivity.loginResponse res) {
+
+            if (restClient.getLoginFlag()){
+                Account=res;
+
+            restClient=RestClient.getInstanceWithAccessToken();
+            restClient.callBack3=this;
+            restClient.findUserById(res.userId);
+            }
+            else {
+                onLoginFailed();
+            }
+
+        }
+        @Override
+        public void userAccountReady(UserAccount user){
+            userRole=user.getUserRole();
+            Log.i(TAG, "the user role is" + userRole);
+            saveUserInfo();
+            onLoginSuccess();
+        }
+    };
 
     private EditText _nameField ;
     private EditText _passwordField;
@@ -35,46 +64,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     boolean loginFlag = false;
 
-    private UserAccount Account;
+    private loginResponse Account;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // get all widgets of the screen
-        _nameField=(EditText)findViewById(R.id.input_name); //_nameField.getText().toString() to have the email
-        _passwordField=(EditText)findViewById(R.id.input_password);//_passwordField.getText().toString() to have the password
+        restClient.callBack3=callback;
+        _nameField=(EditText)findViewById(R.id.input_name);
+        _passwordField=(EditText)findViewById(R.id.input_password);
         _loginButton=(Button)findViewById(R.id.btn_login);
         _signupLink=(TextView)findViewById(R.id.link_signup);
-
-        //ButterKnife.inject(this);
-
-        // Set listner of differents events
         _loginButton.setOnClickListener(
                 new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                login();
-                //Intent intent = new Intent(getApplicationContext(),Escort.class);
-                //startActivityForResult(intent, SUCC_LOGIN);
-                /*if(restClient.getLoginFlag())
-                {
+                    @Override
+                    public void onClick(View v) {
+                        login();
 
-                    //switch to other screens
-                    Log.d("on response", "jump to escort screen");
-                    Intent intent = new Intent(getApplicationContext(),Escort.class);
-                    startActivityForResult(intent, SUCC_LOGIN);
-                }
-                else
-                {
-                    //screen remains unchange
-                    Log.d("on response", "do nothing to screen");
-                }
-                */
-            }
-        });
-
+                    }
+                });
         _signupLink.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -86,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
+    //login logic
     public void login() {
         Log.d(TAG, "Login");
         // in this method
@@ -93,38 +103,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             onLoginFailed();
             return;
         }
-
         _loginButton.setEnabled(false);
-
-       final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
+        restClient.loginUser(getApplication(),loginAccount());
+        //restClient=RestClient.getInstanceWithAccessToken();
 
-        String name = _nameField.getText().toString();
-        String password = _passwordField.getText().toString();
-
-        // TODO: Implement your own authentication logic here.
-        restClient.loginUser(getApplication(), loginAccount());
-
-
-
-
-                new android.os.Handler().postDelayed(
+       /* new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        if(restClient.getLoginFlag()) {
+
+                        if (restClient.getLoginFlag()) {
                             onLoginSuccess();
-                        }
-                        else {
+                        } else {
                             onLoginFailed();
-                            progressDialog.dismiss();
+                            //progressDialog.dismiss();
                         }
-                        progressDialog.dismiss();
+                        //progressDialog.dismiss();
                     }
-                }, 3000);
+                }, 3000);*/
     }
 
 
@@ -148,10 +148,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-        Intent intent = new Intent(getApplicationContext(),Escort.class);
+        Log.i(TAG, "before find user the id is" + Account.id);
+        //Intent intent = new Intent(getApplicationContext(),Escort.class);
+        Intent intent = new Intent(getApplicationContext(),StaffHomeActivity.class);
         startActivityForResult(intent, SUCC_LOGIN);
-
-        //finish();
+        finish();
     }
 
     public void onLoginFailed() {
@@ -191,10 +192,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    public UserAccount loginAccount(){
-        Account=new UserAccount();
-        Account.setUsername(_nameField.getText().toString());
-        Account.setPassword(_passwordField.getText().toString());
+    private void saveUserInfo() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor prefed = prefs.edit();
+        prefed.putString("username", Account.username);
+        //prefed.putString("password", Account.password);
+        prefed.putString("userId", Account.userId);
+        prefed.putInt("userRole",userRole);
+        prefed.commit();
+    }
+    public loginResponse loginAccount(){
+        Account=new loginResponse();
+        Account.username=_nameField.getText().toString();
+        Account.password=_passwordField.getText().toString();
         return Account;
+    }
+    public class loginResponse{
+        public String username;
+        public String password;
+        public String id;
+        public String ttl;
+        public String created;
+        public String userId;
+
     }
 }

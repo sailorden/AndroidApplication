@@ -1,6 +1,10 @@
 package hk.ust.cse.com4521.escort_app;
 
+import android.accounts.Account;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,9 +28,9 @@ public class EscortSignUpActivity extends AppCompatActivity {
 
 
     private static final String TAG = "EscortSignUpActivity";
-    private static final int REQUEST_SIGNUP = 0;
+    private static final int REQUEST_SIGNUP =0;
 
-    RestClient restClient = RestClient.getInstance();
+    RestClient restClient = RestClient.getInstanceWithAccessToken();
 
     private EditText _nameText;
     private EditText _firstNameText;
@@ -164,8 +168,9 @@ public class EscortSignUpActivity extends AppCompatActivity {
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                signup();
 
-                restClient.createUser(getApplication(), createAccount());
+                //restClient.createUser(getApplication(), createAccount());
             }
         });
 
@@ -199,12 +204,7 @@ public class EscortSignUpActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
-        // create an Opbject user than user REtrofit to do post request
-        String name = _nameText.getText().toString();
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
-
-        // TODO: Implement  signup logic here.
+        restClient.createUser(getApplication(), createAccount());
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -212,7 +212,7 @@ public class EscortSignUpActivity extends AppCompatActivity {
                         // On complete call either onSignupSuccess or onSignupFailed
                         // depending on success
                         onSignupSuccess();
-                        // onSignupFailed();
+                        onSignupFailed();
                         progressDialog.dismiss();
                     }
                 }, 3000);
@@ -222,11 +222,14 @@ public class EscortSignUpActivity extends AppCompatActivity {
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
+        saveUserInfo();
+        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+        startActivityForResult(intent, REQUEST_SIGNUP);
         finish();
     }
 
     public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Sign up failed", Toast.LENGTH_LONG).show();
 
         _signupButton.setEnabled(true);
     }
@@ -264,7 +267,7 @@ public class EscortSignUpActivity extends AppCompatActivity {
 
     public UserAccount createAccount(){
         escortAccount=new UserAccount();
-        escortAccount.setUserRole(0); //0 as an escort ( if it's a patient it will be 1 )
+        escortAccount.setUserRole(2);
         escortAccount.setFirstName(_firstNameText.getText().toString());
         escortAccount.setLastName(_lastNameText.getText().toString());
         escortAccount.setChineseName(_chineseFullName.getText().toString());
@@ -282,6 +285,15 @@ public class EscortSignUpActivity extends AppCompatActivity {
         escortAccount.setEscortAvaiTimeSlot(availabilities);
         escortAccount.setPassword(_passwordText.getText().toString());
         return escortAccount;
+    }
+
+    private void saveUserInfo() {
+        SharedPreferences prefs=getApplicationContext().getSharedPreferences(escortAccount.getUsername(), Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefed = prefs.edit();
+        prefed.putString("username", escortAccount.getUsername());
+        prefed.putString("password", escortAccount.getPassword());
+        prefed.putInt("userRole", escortAccount.getUserRole());
+        prefed.commit();
     }
 
 

@@ -29,8 +29,6 @@ public class ServiceGenerator {
         return createService(serviceClass, null);
     }
 
-
-
     public static <S> S createService(Class<S> serviceClass, final String authToken) {
         if (authToken != null) {
             httpClient.interceptors().add(new Interceptor() {

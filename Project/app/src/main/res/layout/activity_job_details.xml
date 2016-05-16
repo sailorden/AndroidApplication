@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="56dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:gravity="center|center_vertical|center_horizontal">
+
+    <LinearLayout
+        android:id="@+id/listLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ListView
+            android:id="@+id/listDetails"
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+        </ListView>
+
+    </LinearLayout>
+
+
+    <Button android:id="@+id/btnAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accept"
+        android:gravity="center|center_vertical|fill_vertical"
+        android:foregroundGravity="center"
+        android:layout_below="@+id/listLayout"
+        android:layout_marginLeft="68dp" />
+
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Decline"
+        android:id="@+id/btnDecline"
+        android:layout_below="@+id/listLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false"
+        android:layout_marginEnd="68dp"
+        android:gravity="center|center_horizontal|fill_vertical"
+        android:layout_marginRight="68dp" />
+
+
+
+
+</RelativeLayout>
+

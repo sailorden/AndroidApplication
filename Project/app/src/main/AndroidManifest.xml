@@ -36,17 +36,33 @@
             android:label="@string/title_activity_job_suggestions"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PendingJobsActivity"
-            android:label="@string/title_activity_pending_jobs"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".CompletedJobActivity"
-            android:label="@string/title_activity_completed_job"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".MeetingDetailsActivity"
             android:label="@string/title_activity_meeting_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".JobSugg"
+            android:label="@string/title_activity_job_sugg"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".JobDetailsActivity"
+            android:label="@string/title_activity_job_details"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PendingJobDetailActivity"
+            android:label="@string/title_activity_pending_job_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CompletedJobDetailActivity"
+            android:label="@string/title_activity_completed_job_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".StaffHomeActivity"
+            android:label="@string/title_activity_staff_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UserAccountManagementActivity" />
+        <activity android:name=".CreateStaffAccountActivity" />
+        <activity android:name=".DeleteUserAccountActivity" />
+        <activity android:name=".UserAccountDetailActivity"></activity>
     </application>
 
 </manifest>
